@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Faizan | Portfolio</title>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:'Poppins',sans-serif;
+            background:#050816;
+            color:white;
+            overflow-x:hidden;
+        }
+
+        ::-webkit-scrollbar{
+            width:8px;
+        }
+
+        ::-webkit-scrollbar-thumb{
+            background:#00f7ff;
+            border-radius:20px;
+        }
+
+        body::before{
+            content:'';
+            position:fixed;
+            width:500px;
+            height:500px;
+            background:#00f7ff33;
+            filter:blur(150px);
+            top:-100px;
+            left:-100px;
+            z-index:-1;
+            animation:move1 10s infinite alternate;
+        }
+
+        body::after{
+            content:'';
+            position:fixed;
+            width:400px;
+            height:400px;
+            background:#8b5cf633;
+            filter:blur(140px);
+            bottom:-100px;
+            right:-100px;
+            z-index:-1;
+            animation:move2 12s infinite alternate;
+        }
+
+        @keyframes move1{
+            from{
+                transform:translateY(0px);
+            }
+            to{
+                transform:translateY(150px);
+            }
+        }
+
+        @keyframes move2{
+            from{
+                transform:translateX(0px);
+            }
+            to{
+                transform:translateX(-150px);
+            }
+        }
+
+        nav{
+            width:100%;
+            padding:20px 8%;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            position:fixed;
+            top:0;
+            z-index:999;
+            backdrop-filter:blur(12px);
+            background:#0b1120aa;
+            border-bottom:1px solid #00f7ff33;
+        }
+
+        .logo{
+            font-family:'Orbitron',sans-serif;
+            font-size:28px;
+            color:#00f7ff;
+            font-weight:bold;
+            text-shadow:0 0 15px #00f7ff;
+        }
+
+        nav ul{
+            display:flex;
+            gap:30px;
+            list-style:none;
+        }
+
+        nav ul li a{
+            text-decoration:none;
+            color:white;
+            transition:0.3s;
+            position:relative;
+        }
+
+        nav ul li a::after{
+            content:'';
+            position:absolute;
+            left:0;
+            bottom:-5px;
+            width:0%;
+            height:2px;
+            background:#00f7ff;
+            transition:0.4s;
+        }
+
+        nav ul li a:hover::after{
+            width:100%;
+        }
+
+        nav ul li a:hover{
+            color:#00f7ff;
+        }
+
+        .hero{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:120px 8%;
+            gap:70px;
+            flex-wrap:wrap;
+        }
+
+        .hero-text{
+            flex:1;
+        }
+
+        .hero-text h1{
+            font-size:65px;
+            line-height:1.2;
+            margin-bottom:20px;
+        }
+
+        .hero-text h1 span{
+            color:#00f7ff;
+            text-shadow:0 0 20px #00f7ff;
+        }
+
+        .hero-text h3{
+            font-size:28px;
+            margin-bottom:20px;
+            color:#8b5cf6;
+            min-height:40px;
+        }
+
+        .hero-text p{
+            line-height:2;
+            color:#cbd5e1;
+            max-width:600px;
+            margin-bottom:30px;
+        }
+
+        .btn{
+            display:inline-block;
+            padding:14px 32px;
+            background:linear-gradient(90deg,#00f7ff,#8b5cf6);
+            color:white;
+            border-radius:40px;
+            text-decoration:none;
+            font-weight:600;
+            transition:0.4s;
+            box-shadow:0 0 20px #00f7ff55;
+        }
+
+        .btn:hover{
+            transform:translateY(-5px) scale(1.05);
+            box-shadow:0 0 35px #00f7ff;
+        }
+
+        .hero-image{
+            flex:1;
+            display:flex;
+            justify-content:center;
+            position:relative;
+        }
+
+        .hero-image img{
+            width:350px;
+            border-radius:30px;
+            border:3px solid #00f7ff;
+            animation:float 4s ease-in-out infinite;
+            box-shadow:0 0 40px #00f7ff66;
+        }
+
+        @keyframes float{
+            0%{
+                transform:translateY(0px);
+            }
+            50%{
+                transform:translateY(-20px);
+            }
+            100%{
+                transform:translateY(0px);
+            }
+        }
+
+        section{
+            padding:100px 8%;
+        }
+
+        .section-title{
+            text-align:center;
+            font-size:45px;
+            margin-bottom:60px;
+            font-family:'Orbitron',sans-serif;
+            color:#00f7ff;
+            text-shadow:0 0 10px #00f7ff;
+        }
+
+        /* About */
+
+        .about{
+            text-align:center;
+        }
+
+        .about p{
+            max-width:900px;
+            margin:auto;
+            line-height:2;
+            color:#cbd5e1;
+        }
+
+        .skills-container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:25px;
+        }
+
+        .skill-card{
+            background:#0f172a;
+            border:1px solid #00f7ff33;
+            padding:40px 25px;
+            border-radius:25px;
+            text-align:center;
+            transition:0.5s;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .skill-card::before{
+            content:'';
+            position:absolute;
+            width:100%;
+            height:100%;
+            background:linear-gradient(45deg,transparent,#00f7ff22,transparent);
+            top:-100%;
+            left:-100%;
+            transition:0.6s;
+        }
+
+        .skill-card:hover::before{
+            top:100%;
+            left:100%;
+        }
+
+        .skill-card:hover{
+            transform:translateY(-15px);
+            box-shadow:0 0 25px #00f7ff55;
+        }
+
+        .skill-card i{
+            font-size:50px;
+            color:#00f7ff;
+            margin-bottom:20px;
+        }
+
+        .projects-container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:30px;
+        }
+
+        .project-card{
+            background:#0f172a;
+            border-radius:25px;
+            overflow:hidden;
+            border:1px solid #8b5cf655;
+            transition:0.5s;
+        }
+
+        .project-card:hover{
+            transform:translateY(-15px);
+            box-shadow:0 0 30px #8b5cf655;
+        }
+
+        .project-card img{
+            width:100%;
+            height:220px;
+            object-fit:cover;
+        }
+
+        .project-content{
+            padding:25px;
+        }
+
+        .project-content h3{
+            color:#00f7ff;
+            margin-bottom:15px;
+        }
+
+        .project-content p{
+            color:#cbd5e1;
+            line-height:1.8;
+            margin-bottom:20px;
+        }
+
+        .contact-box{
+            max-width:700px;
+            margin:auto;
+            background:#0f172a;
+            padding:40px;
+            border-radius:30px;
+            border:1px solid #00f7ff33;
+        }
+
+        form{
+            display:flex;
+            flex-direction:column;
+            gap:20px;
+        }
+
+        input,
+        textarea{
+            padding:16px;
+            border:none;
+            border-radius:12px;
+            background:#111827;
+            color:white;
+            outline:none;
+            border:1px solid transparent;
+            transition:0.3s;
+        }
+
+        input:focus,
+        textarea:focus{
+            border:1px solid #00f7ff;
+            box-shadow:0 0 10px #00f7ff66;
+        }
+
+        textarea{
+            resize:none;
+            height:150px;
+        }
+
+        button{
+            padding:15px;
+            border:none;
+            border-radius:40px;
+            background:linear-gradient(90deg,#00f7ff,#8b5cf6);
+            color:white;
+            font-size:16px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.4s;
+        }
+
+        button:hover{
+            transform:scale(1.05);
+        }
+
+        footer{
+            text-align:center;
+            padding:30px;
+            border-top:1px solid #00f7ff22;
+            margin-top:50px;
+            color:#94a3b8;
+        }
+
+        @media(max-width:768px){
+
+            nav{
+                flex-direction:column;
+                gap:20px;
+            }
+
+            nav ul{
+                gap:15px;
+                flex-wrap:wrap;
+                justify-content:center;
+            }
+
+            .hero{
+                text-align:center;
+            }
+
+            .hero-text h1{
+                font-size:45px;
+            }
+
+            .hero-image img{
+                width:260px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="logo">FAIZAN MASOODI</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+    <section class="hero" id="home">
+
+        <div class="hero-text" data-aos="fade-right">
+
+            <h1>
+                Hi, I'm <span>Faizan Masoodi</span>
+            </h1>
+
+            <h3 id="typing"></h3>
+
+            <p>
+                Computer Science student passionate about Backend Development,
+                Data Analysis, I build modern,
+                interactive, and performance-focused projects.
+            </p>
+
+            <a href="#projects" class="btn">
+                Explore Projects
+            </a>
+
+        </div>
+
+        <div class="hero-image" data-aos="zoom-in">
+
+            <img src="faizan picture.jpeg">
+
+        </div>
+
+    </section>
+
+    <section class="about" id="about">
+
+        <h2 class="section-title" data-aos="fade-up">About Me</h2>
+
+        <p data-aos="fade-up" data-aos-delay="200">
+
+            I am currently pursuing BS Software Enginnering at Iqra University.
+            I specialize in creating data-driven projects.
+            I enjoy solving problems, learning modern
+            technologies, and building creative Projects.
+
+        </p>
+
+    </section>
+
+    <section id="skills">
+
+        <h2 class="section-title" data-aos="fade-up">Skills</h2>
+
+        <div class="skills-container">
+
+            <div class="skill-card" data-aos="flip-left">
+                <i class="fa-brands fa-html5"></i>
+                <h3>HTML5</h3>
+            </div>
+
+            <div class="skill-card" data-aos="flip-left" data-aos-delay="100">
+                <i class="fa-brands fa-css3-alt"></i>
+                <h3>CSS3</h3>
+            </div>
+
+            <div class="skill-card" data-aos="flip-left" data-aos-delay="200">
+                <i class="fa-brands fa-js"></i>
+                <h3>JavaScript</h3>
+            </div>
+
+            <div class="skill-card" data-aos="flip-left" data-aos-delay="300">
+                <i class="fa-brands fa-java"></i>
+                <h3>Java</h3>
+            </div>
+
+            <div class="skill-card" data-aos="flip-left" data-aos-delay="400">
+                <i class="fa-solid fa-database"></i>
+                <h3>SQL</h3>
+            </div>
+
+            <div class="skill-card" data-aos="flip-left" data-aos-delay="500">
+                <i class="fa-solid fa-chart-simple"></i>
+                <h3>Data Analysis</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="projects">
+
+        <h2 class="section-title" data-aos="fade-up">Projects</h2>
+
+        <div class="projects-container">
+
+            <div class="project-card" data-aos="zoom-in">
+
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1170&auto=format&fit=crop">
+
+                <div class="project-content">
+
+                    <h3>Car Rental System</h3>
+
+                    <p>
+                        Java-based rental system with customer management,
+                        bookings, billing, and vehicle tracking.
+                    </p>
+
+                    <a href="#" class="btn">GitHub</a>
+
+                </div>
+
+            </div>
+
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="150">
+
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1170&auto=format&fit=crop">
+
+                <div class="project-content">
+
+                    <h3>Carbon Emission Analysis</h3>
+
+                    <p>
+                        Tableau dashboard visualizing global carbon emissions
+                        with dynamic maps and analytics.
+                    </p>
+
+                    <a href="#" class="btn">GitHub</a>
+
+                </div>
+
+            </div>
+
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+
+                <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1170&auto=format&fit=crop">
+
+                <div class="project-content">
+
+                    <h3>OS Simulator</h3>
+
+                    <p>
+                        Operating System simulation project implementing memory
+                        management and CPU scheduling algorithms.
+                    </p>
+
+                    <a href="#" class="btn">GitHub</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="contact">
+
+        <h2 class="section-title" data-aos="fade-up">Contact Me</h2>
+
+        <div class="contact-box" data-aos="fade-up" data-aos-delay="200">
+
+            <form id="contactForm">
+
+                <input type="text" placeholder="Your Name" required>
+
+                <input type="email" placeholder="Your Email" required>
+
+                <textarea placeholder="Your Message"></textarea>
+
+                <button type="submit">Send Message</button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        © 2026 Faizan Portfolio | Yeh Mera Kaam Hai
+
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+
+        AOS.init({
+            duration:1200,
+            once:false
+        });
+
+        const words = [
+            "Backend Developer",
+            "Data Analyst",
+            "Tech Enthusiast",
+            "Java Programmer",
+            "Creative Coder"
+        ];
+
+        let i = 0;
+        let timer;
+
+        function typingEffect(){
+
+            let word = words[i].split("");
+            var loopTyping = function(){
+
+                if(word.length > 0){
+
+                    document.getElementById('typing').innerHTML += word.shift();
+
+                }else{
+
+                    deletingEffect();
+
+                    return false;
+                };
+
+                timer = setTimeout(loopTyping,150);
+
+            };
+
+            loopTyping();
+
+        };
+
+        function deletingEffect(){
+
+            let word = words[i].split("");
+            var loopDeleting = function(){
+
+                if(word.length > 0){
+
+                    word.pop();
+
+                    document.getElementById('typing').innerHTML = word.join("");
+
+                }else{
+
+                    if(words.length > (i + 1)){
+
+                        i++;
+
+                    }else{
+
+                        i = 0;
+                    };
+
+                    typingEffect();
+
+                    return false;
+
+                };
+
+                timer = setTimeout(loopDeleting,80);
+
+            };
+
+            loopDeleting();
+
+        };
+
+        typingEffect();
+
+        document.getElementById("contactForm").addEventListener("submit",function(e){
+
+            e.preventDefault();
+
+            alert("Message Sent Successfully ");
+
+        });
+
+    </script>
+
+</body>
+
+</html>
